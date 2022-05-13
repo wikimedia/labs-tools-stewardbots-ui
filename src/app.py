@@ -22,10 +22,7 @@ from flask_jsonlocale import Locales
 from flask_mwoauth import MWOAuth
 from requests_oauthlib import OAuth1
 
-app = Flask(
-    __name__,
-    static_folder="../static"
-)
+app = Flask(__name__, static_folder="../static")
 
 useragent = "StewardBots UI (tools.stewardbots@tools.wmflabs.org)"
 
@@ -49,6 +46,7 @@ app.register_blueprint(mwoauth.bp)
 
 def feature_enabled(feature):
     return feature in app.config.get("ENABLED_FEATURES")
+
 
 def logged():
     return mwoauth.get_current_user() is not None
@@ -77,26 +75,23 @@ def mw_request(data, url=None):
 
 @app.context_processor
 def inject_base_variables():
-    return {
-        "logged": logged(),
-        "username": mwoauth.get_current_user()
-    }
+    return {"logged": logged(), "username": mwoauth.get_current_user()}
 
 
 @app.route("/")
 def index():
-    return render_template(
-        "index.html",
-        feature_login = feature_enabled("login")
-    )
+    return render_template("index.html", feature_login=feature_enabled("login"))
+
 
 @app.route("/StewardBot")
 def StewardBot():
     return render_template("StewardBot.html")
 
+
 @app.route("/SULWatcher")
 def SULWatcher():
     return render_template("SULWatcher.html")
+
 
 """ 
 @app.before_request
@@ -129,6 +124,7 @@ def restart(tool):
     flash("The bot %s was restarted" % tool)
     return redirect(url_for("index"))
  """
+
 
 @app.route("/Elections")
 @app.route("/Elections/")
