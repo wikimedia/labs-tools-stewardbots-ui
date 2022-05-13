@@ -1,0 +1,40 @@
+#results a {
+    display: block;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+#results a:hover {
+    color: #aa3300;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+table.wikitable {
+    font-size: 85%;
+    background: #F9F9F9 none repeat scroll 0 0;
+    border: 1px solid #AAAAAA;
+    border-collapse: collapse;
+    margin: 1em 1em 1em 0;
+}
+
+.wikitable th,
+.wikitable td {
+    border: 1px solid #AAAAAA;
+    padding: 0.2em;
+}
+
+.wikitable th {
+    background: #F2F2F2 none repeat scroll 0 0;
+    text-align: center;
+}
+
+.wikitable caption {
+    font-weight: bold;
+}
+
+.docs-header {
+    padding-top: 1em;
+}

@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="text-center docs-header">
+        <h1>SULWatcher</h1>
+        <p><strong>SULWatcher</strong> notifies <tt>#cvn-unifications</tt> of account unifications across Wikimedia
+            Foundation public wikis.</p>
+    </div>
+    
+    <h2 id="commands">Commands</h2>
+    <p>You need to be voiced in IRC to be able to use these commands. Note that the commands start with the bot&#39;s
+        nickname, whatever it is, plus a colon. Normally the bot runs using two nicks (SULWatcher and WatcherSUL) and
+        issuing a command to either one has the same effect. <code>SULWatcher:</code>&nbsp;is used for these examples.
+    </p>
+
+    <table class="wikitable">
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SULWatcher:&nbsp;test</td>
+                <td>Test if the bot is alive</td>
+                <td>SULWatcher:&nbsp;test</td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;test&nbsp;<i>[string]</i>&nbsp;regex&nbsp;<i>[regex]</i></td>
+                <td>Test the regex against the string</td>
+                <td>SULWatcher:&nbsp;test&nbsp;grawp&nbsp;regex&nbsp;<code>\bpoop\b</code></td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;find&nbsp;regex&nbsp;<i>[regex]</i></td>
+                <td>Find information on a given regex</td>
+                <td>SULWatcher:&nbsp;find&nbsp;regex&nbsp;<code>\bpoop\b</code></td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;find&nbsp;match&nbsp;<i>[string]</i></td>
+                <td>Find the regex which matches the provided string</td>
+                <td>SULWatcher:&nbsp;find&nbsp;match&nbsp;<code>\bpoop\b</code></td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;find&nbsp;adder&nbsp;<i>[cloak]</i></td>
+                <td>Find the regexes attributed to a given cloak</td>
+                <td>SULWatcher:&nbsp;find&nbsp;adder&nbsp;<i>wikimedia/mikelifeguard</i></td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;find&nbsp;number&nbsp;<i>[#]</i></td>
+                <td>Find information on a given entry</td>
+                <td>SULWatcher:&nbsp;find&nbsp;number&nbsp;3</td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;add&nbsp;reason&nbsp;<i>[#]</i>&nbsp;<i>[reason]</i></td>
+                <td>Add a reason for a certain entry if it is attributed to you</td>
+                <td>SULWatcher:&nbsp;add&nbsp;reason&nbsp;1&nbsp;suspicious&nbsp;-&nbsp;matches&nbsp;pattern&nbsp;vandalism
+                </td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;add&nbsp;reason&nbsp;<i>[#]</i>&nbsp;<b>!</b>&nbsp;<i>[reason]</i></td>
+                <td>Re-attribute the entry to you with a given reason</td>
+                <td>SULWatcher:&nbsp;add&nbsp;reason&nbsp;1&nbsp;!&nbsp;I&nbsp;want&nbsp;to&nbsp;take&nbsp;credit&nbsp;for&nbsp;someone&nbsp;else&#39;s&nbsp;work
+                </td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;(add|remove|list)&nbsp;badword&nbsp;<i>[regex]</i></td>
+                <td>Add/remove/list regexes to match against unifications</td>
+                <td>SULWatcher:&nbsp;add&nbsp;badword&nbsp;<code>\bpoop\b</code><br />
+                    SULWatcher:&nbsp;list&nbsp;badword</td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;(add|remove|list)&nbsp;whitelist&nbsp;<i>[username]</i></td>
+                <td>Add/remove/list users who are whitelisted</td>
+                <td>SULWatcher:&nbsp;add&nbsp;whitelist&nbsp;Mike.lifeguard<br />
+                    SULWatcher:&nbsp;list&nbsp;whitelist</td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;edit&nbsp;<i>[#]</i>&nbsp;enable&nbsp;</td>
+                <td>Re-enable an existing regex</td>
+                <td>SULWatcher:&nbsp;edit&nbsp;2&nbsp;enable</td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;edit&nbsp;<i>[#]</i>&nbsp;(regex|reason)&nbsp;<i>[whatever]</i></td>
+                <td>Change the regex/reason for an entry, if it is attributed to you</td>
+                <td>SULWatcher:&nbsp;edit&nbsp;2&nbsp;regex&nbsp;<code>\bpoop\b</code></td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;edit&nbsp;<i>[#]</i>&nbsp;(regex|reason)&nbsp;<b>!</b>&nbsp;<i>[whatever]</i></td>
+                <td>Change the regex/reason for an entry, re-attributing it to you</td>
+                <td>SULWatcher:&nbsp;edit&nbsp;2&nbsp;reason&nbsp;!&nbsp;Added&nbsp;word&nbsp;boundaries&nbsp;for&nbsp;fewer&nbsp;false&nbsp;positives
+                </td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;edit&nbsp;<i>[#]</i>&nbsp;case&nbsp;<i>(true|false)</i></td>
+                <td>Make an entry either case sensitive or insensitive</td>
+                <td>SULWatcher:&nbsp;edit&nbsp;2&nbsp;case&nbsp;true</td>
+            </tr>
+            <tr>
+                <td align="center" colspan="3"><b>For <i>list</i> commands, don&#39;t provide a
+                        (regex|cloak|nick|username).</b></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="3">The following commands are restricted to opped users.</td>
+            </tr>
+            <tr>
+                <th>Restricted command</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;restart</td>
+                <td>Restart the bots</td>
+                <td>SULWatcher:&nbsp;restart</td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;restart&nbsp;rc</td>
+                <td>Restart the <a href="https://meta.wikimedia.org/wiki/Help:Recent_changes">RC</a> reader</td>
+                <td>SULWatcher:&nbsp;restart&nbsp;rc</td>
+            </tr>
+            <tr>
+                <td>SULWatcher:&nbsp;die</td>
+                <td>Kill all the bots</td>
+                <td>SULWatcher:&nbsp;die<span style="color:grey;">*</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

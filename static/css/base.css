@@ -1,0 +1,27 @@
+a,
+a:visited,
+a:hover {
+    color: #555555;
+    border-bottom: solid 1px #666666;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom: dashed 1px #666666;
+}
+
+footer {
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+}
+
+p.footer {
+    margin-top: 3em;
+    padding-top: 0.3em;
+    border-top: dashed 1px black;
+    font-size: small;
+}
+
+li {
+    line-height: 145%;
+}
