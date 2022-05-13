@@ -2,5 +2,7 @@
     "login": "Login",
     "logout": "Logout",
     "source-code": "Source",
-    "report-bug": "Report a bug"
+    "report-bug": "Report a bug",
+    "terms-of-use": "Terms of use",
+    "code-of-conduct": "Code of conduct"
 }
