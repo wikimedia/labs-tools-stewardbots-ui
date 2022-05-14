@@ -2,3 +2,4 @@ venv/
 config.yaml
 .vscode/
 __pycache__/
+.tox/
