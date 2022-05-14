@@ -17,7 +17,7 @@ import os
 
 import requests
 import yaml
-from flask import Flask, flash, redirect, render_template, request, session, url_for
+from flask import Flask, redirect, render_template, session
 from flask_jsonlocale import Locales
 from flask_mwoauth import MWOAuth
 from requests_oauthlib import OAuth1
@@ -93,7 +93,7 @@ def SULWatcher():
     return render_template("SULWatcher.html")
 
 
-""" 
+"""
 @app.before_request
 def check_permissions():
     if (
